@@ -8,7 +8,7 @@ Tired of writing `new(big.Int)...`? This package provides a set of functions to 
 go get -u github.com/slzhffktm/go-betterbig
 ```
 
-## Usage
+## Why is this (probably) better?
 
 On native big.Int, to do a+b-c:
 
