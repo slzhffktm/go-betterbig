@@ -210,4 +210,11 @@ func (i Int) Sqrt() Int {
 	return Int{native: new(big.Int).Sqrt(i.native)}
 }
 
-// TODO: FillBytes, Exp, GCD
+func (i Int) Exp(exp Int, m *Int) Int {
+	if m == nil {
+		return Int{native: new(big.Int).Exp(i.native, exp.native, nil)}
+	}
+	return Int{native: new(big.Int).Exp(i.native, exp.native, m.native)}
+}
+
+// TODO: FillBytes, GCD

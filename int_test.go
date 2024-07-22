@@ -310,6 +310,24 @@ func TestInt_Sqrt(t *testing.T) {
 	assert.Equal(t, new(big.Int).Sqrt(native), i.Sqrt().BigInt())
 }
 
+func TestInt_Exp_MNil(t *testing.T) {
+	xNative := big.NewInt(10)
+	yNative := big.NewInt(18)
+	x := betterbig.NewIntFromBigInt(xNative)
+	y := betterbig.NewIntFromBigInt(yNative)
+	assert.Equal(t, new(big.Int).Exp(xNative, yNative, nil), x.Exp(y, nil).BigInt())
+}
+
+func TestInt_Exp_MNotNil(t *testing.T) {
+	xNative := big.NewInt(10)
+	yNative := big.NewInt(18)
+	mNative := big.NewInt(3)
+	x := betterbig.NewIntFromBigInt(xNative)
+	y := betterbig.NewIntFromBigInt(yNative)
+	m := betterbig.NewIntFromBigInt(mNative)
+	assert.Equal(t, new(big.Int).Exp(xNative, yNative, mNative), x.Exp(y, &m).BigInt())
+}
+
 func TestInt_MultipleOperations(t *testing.T) {
 	i := betterbig.NewIntFromInt64(10)
 	i = i.Add(i).Mul(i).Quo(i).Rem(betterbig.NewIntFromInt64(12)).Div(i).Mod(i).Lsh(4).
